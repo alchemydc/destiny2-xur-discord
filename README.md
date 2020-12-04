@@ -1,7 +1,7 @@
 # destiny2-xur-discord
 
 ## Overview
-Xur is an NPC in Bungie's MMO shooter (Destiny2)[https://www.bungie.net/7/en/Destiny/BeyondLight],
+Xur is an NPC in Bungie's MMO shooter [Destiny2](https://www.bungie.net/7/en/Destiny/BeyondLight])
 which a space magic infused descendant of Halo.  
 Xur visits only for a few days a week, landing on Fridays and 
 selling different exotic weapons and armor from* R a random location.
@@ -11,8 +11,8 @@ and is designed to be run from cron or as a cloud function.
 
 ## Requirements
 * Python3
-* Discord server with an activated (webhook integration)[https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks]
-* (Bungie API key)[https://github.com/Bungie-net/api/wiki/Bungie.net-Application-Portal]
+* Discord server with an activated [webhook integration](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
+* [Bungie API key](https://github.com/Bungie-net/api/wiki/Bungie.net-Application-Portal)
 
 ## Installation (Linux or OSX)
 1. Create a separate user named 'xur'
