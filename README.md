@@ -9,6 +9,8 @@ selling different exotic weapons and armor from* R a random location.
 This script Post Xur's location and inventory to a Discord webhook,
 and is designed to be run from cron or as a cloud function.
 
+![alt text](https://alchemydc-public.s3-us-west-1.amazonaws.com/xur.png)
+
 ## Requirements
 * Python3
 * Discord server with an activated [webhook integration](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
