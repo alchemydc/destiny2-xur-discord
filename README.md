@@ -2,9 +2,9 @@
 
 ## Overview
 Xur is an NPC in Bungie's MMO shooter [Destiny2](https://www.bungie.net/7/en/Destiny/BeyondLight])
-which a space magic infused descendant of Halo.  
+which is a space magic infused descendant of Halo.  
 Xur visits only for a few days a week, landing on Fridays and 
-selling different exotic weapons and armor from* R a random location.
+selling different exotic weapons and armor from a random location.
 
 This script Post Xur's location and inventory to a Discord webhook,
 and is designed to be run from cron or as a cloud function.
@@ -34,8 +34,7 @@ git clone https://github.com/alchemydc/destiny2-xur-discord.git
 4. Create and activate a python virtual environment
 (recommended to keep deps separate from system python)
 ```console
-python -m virtualenv .
-./bin/activate
+python -m virtualenv . && ./bin/activate
 ```
 
 5. Install python dependencies
@@ -59,7 +58,8 @@ python3 xur.py
 ```
 
 ## Schedule it to run automatically
-* Xur comes on Fridays after the daily reset, so it's convenient to have this script run right after that. If Xur has something you don't, then go see him!
+Xur comes on Fridays after the daily reset, so it's convenient to have this script run right after that. If Xur has something you don't, then go see him!
+
 1. Make xur wrapper bash script and python script executable
 ```console
 chmod u+x xur.sh xur.py

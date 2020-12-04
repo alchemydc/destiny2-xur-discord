@@ -16,22 +16,23 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-env_path = Path('.') / '.env-testing'   #non-std .env b/c we're in a venv <shrug>
-load_dotenv(dotenv_path=env_path)
+# create a custom requests object, modifying the global module throws an error
+http = requests.Session()
+assert_status_hook = lambda response, *args, **kwargs: response.raise_for_status()
+http.hooks["response"] = [assert_status_hook]
 
+# read secrets from env vars
+env_path = Path('.') / '.env'
+load_dotenv(dotenv_path=env_path)
 bungoAPIkey = os.getenv('BUNGIE-API-KEY')
 discordWebhookURI = os.getenv('DISCORD-WEBHOOK')
 
 def getData(url, http_headers={}):
-  try:
-          response = requests.get(url, headers=http_headers)
-          if __debug__: print(response)
-          data = response.json()
-          return(data)
-  except Exception as e:
-      print(e.message)
-
-def parseData(data):
+  response = http.get(url, headers = http_headers)
+  if __debug__: print(response)
+  return(response.json())
+  
+def parseLocationData(data):
   if data == None:
       print("Xur is nowhere to be found. Try again tomorrow!")
       return("not_here")
@@ -55,11 +56,8 @@ def discordAlert(data, uri):
         "avatar_url": 'https://cdn.vox-cdn.com/thumbor/s9YY-SN68kjPa0a44FKoOep5X0g=/0x0:1920x1080/1200x800/filters:focal(41x0:347x306)/cdn.vox-cdn.com/uploads/chorus_image/image/59217189/Xur_Destiny_2_.0.jpg',
         "content": data
     }
-    try:
-        res = requests.post(uri, headers=http_headers, json=payload)
-        if __debug__: print(res)
-    except Exception as e:
-        print(e.message)
+    response = http.post(uri, headers=http_headers, json=payload)
+    if __debug__: print(response)
 
 def discordEmbed(itemName, itemTypeAndTier, itemIcon, itemScreenshot, itemFlavor, itemType, uri):
     if __debug__: print("Sending embed to discord at %s with params \nitemName = %s\n, itemTypeAndTier = %s\n, itemIcon = %s\n, itemScreenshot = %s, itemFlavor = %s\n, itemType = %s\n" % (uri, itemName, itemTypeAndTier, itemIcon, itemScreenshot, itemFlavor, itemType))
@@ -88,13 +86,8 @@ def discordEmbed(itemName, itemTypeAndTier, itemIcon, itemScreenshot, itemFlavor
             }
         ]
     }
-    try:
-        res = requests.post(uri, headers=http_headers, json=payload)
-        if __debug__:
-            print(res.status_code)
-            print(res.content)
-    except Exception as e:
-        print(e.message)
+    response = http.post(uri, headers=http_headers, json=payload)
+    if __debug__: print(response.content)            
 
 def getInventory(uri):
     http_headers = {
@@ -139,7 +132,7 @@ def parseItemData(itemData):
 print("Contacting Xur location API")
 data = getData(xurAPIuri)
 if __debug__: print("Parsing results")
-location = parseData(data)
+location = parseLocationData(data)
 if location == "not_here":
     print("Xur isn't here, skipping the alert") 
     exit(0)
