@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # invoke with python3 -O xur.py to omit debug output
 
-xurAPIuri = 'https://paracausal.science/xur/current.json'   # not sure who runs this endpoint, but you are a gentleman and a scholar :)
+xurAPIuri = 'https://paracausal.science/xur/current.json'   # props to @nev_rtheless for this fine endpoint :)
 bungoAPIbaseURI = 'https://www.bungie.net/Platform/Destiny2/'
 bungoXurURI = 'Vendors/?components=402'
 bungoItemURI = 'Manifest/DestinyInventoryItemDefinition/'

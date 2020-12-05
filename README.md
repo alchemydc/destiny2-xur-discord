@@ -11,6 +11,10 @@ and is designed to be run from cron or as a cloud function.
 
 ![alt text](https://alchemydc-public.s3-us-west-1.amazonaws.com/xur.png)
 
+## Gratitude
+* Thanks to [@nev](https://twitter.com/nev_rtheless) for exposing the magical API that shares Xur's location as JSON.
+* Thanks to the kind folks on the [Destiny API Discussion Discord](https://discord.com/invite/E5uB4BW) for helping me wrap my head around the new D2 API.
+
 ## Requirements
 * Python3
 * Discord server with an activated [webhook integration](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
