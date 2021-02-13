@@ -113,18 +113,18 @@ def getManifestData(basePath, itemHashes):
     }
     manifestData = []
     for hash in itemHashes:
-        print(hash)
+        #print(hash)
         uri = basePath +str(hash)
-        print(uri)
+        #print(uri)
         itemData = getData(uri, http_headers)
-        print(itemData)
+        #print(itemData)
         manifestData.append(itemData)
     return(manifestData)
 
 def parseItemData(itemData):
     parsedItemData = []
     for item in itemData:
-        print(item)
+        #print(item)
         parsedItem = {
             'name'       : item['Response']['displayProperties']['name'],
             'flavor'     : item['Response']['flavorText'],
@@ -151,7 +151,6 @@ def main():
     print("Contacting Xur inventory API")
     itemHashes = getInventory(bungoAPIbaseURI+bungoXurURI)
     #print(itemHashes)
-    print(itemHashes)
     itemData = getManifestData(bungoAPIbaseURI+bungoItemURI,itemHashes)
     #print(itemData)
     parsedItemData = parseItemData(itemData)
