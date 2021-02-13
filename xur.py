@@ -13,6 +13,7 @@ BANNED_HASHES=[3875551374,2125848607]
 XUR_AVATAR = 'https://cdn.vox-cdn.com/uploads/chorus_image/image/59217189/Xur_Destiny_2_.0.jpg'
 
 import requests
+from requests_toolbelt.utils import dump
 import json
 import urllib.parse
 import os
@@ -24,6 +25,14 @@ from dotenv import load_dotenv
 http = requests.Session()
 assert_status_hook = lambda response, *args, **kwargs: response.raise_for_status()
 http.hooks["response"] = [assert_status_hook]
+
+# dump verbose request and response data to stdout
+def logging_hook(response, *args, **kwargs):
+    data = dump.dump_all(response)
+    print(data.decode('utf-8'))
+
+#setup Requests to log request and response to stdout verbosely
+#http.hooks["response"] = [logging_hook]
 
 # read secrets from env vars
 env_path = Path('.') / '.env'
