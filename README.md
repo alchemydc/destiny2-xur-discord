@@ -38,7 +38,7 @@ git clone https://github.com/alchemydc/destiny2-xur-discord.git
 4. Create and activate a python virtual environment
 (recommended to keep deps separate from system python)
 ```console
-python -m virtualenv . && ./bin/activate
+python3 -m virtualenv . && source bin/activate
 ```
 
 5. Install python dependencies
