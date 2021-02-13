@@ -2,5 +2,5 @@
 set -x
 
 source /home/xur/destiny2-xur-discord/bin/activate
-cd /home/xur/destiny2-xur-discord/xur.py
+cd /home/xur/destiny2-xur-discord
 ./xur.py
