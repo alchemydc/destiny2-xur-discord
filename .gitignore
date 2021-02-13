@@ -136,3 +136,6 @@ dmypy.json
 # osx python3 venv artifacts
 bin/
 pyvenv.cfg
+
+#linux venv artifacts
+lib64
